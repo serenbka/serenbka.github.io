@@ -1140,9 +1140,12 @@ input, select, textarea {
 			-ms-transition-delay: 0.75s;
 			transition-delay: 0.75s;
 			background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("../../images/overlay.png");
-			background-size: auto, 256px 256px;
-			background-position: center, center;
-			background-repeat: no-repeat, repeat;
+			background-size: auto,
+ 256px 256px;
+			background-position: center,
+ center;
+			background-repeat: no-repeat,
+ repeat;
 			z-index: 2;
 		}
 
@@ -1656,3 +1659,28 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
+/* Настройки фонового контейнера */
+#bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; /* Уводит на самый задний план */
+    overflow: hidden;
+    background-color: #000000; /* Глубокий черный цвет под звездами */
+}
+
+/* Делаем сам плеер Lottie растянутым по размеру */
+#bg-container dotlottie-player {
+    object-fit: cover; /* Растягивает анимацию без искажений */
+    width: 100%;
+    height: 100%;
+}
+
+/* Немного затемним основной фон шаблона, чтобы звезды были видны лучше */
+#wrapper {
+    background-color: rgba(0, 0, 0, 0.2); /* Легкая прозрачность для контента */
+    min-height: 100vh;
+}
