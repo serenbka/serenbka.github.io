@@ -33,43 +33,40 @@
     </nav>
 
     <div class="content">
-        <div class="inner">
+        <div class="inner">	
+			
             <h1>Serhii Aleinykov</h1>
-            <p>Motion artist | Video editor</p>
-            
-            <ul class="actions">
-                <li><a href="#work" class="button primary">Showreel 2026</a></li>
-            </ul>
+            <p>Motion artist | Video editor</p> 
+			
         </div>
     </div>	
-						<div class="main-projects-grid">
-    <div class="project-card">
+<div class="project-card">
+    <a href="https://player.vimeo.com/video/1159782951" class="vimeo-popup">
         <div class="video-preview">
-			<div class="play-overlay">
-            <span class="icon solid fa-play"></span>
+            <div class="play-overlay">
+                <span class="icon solid fa-play"></span>
+            </div>
+            <img src="images/preview1.gif" alt="Cyberpunk UI">
         </div>
-            <a href="https://vimeo.com/1159782951" target="_blank" class="button small">Смотреть</a>
-        </div>
-        <div class="project-info">
-            <h4>Cyberpunk UI Concept</h4>
-            <a href="#work" class="play-icon"></a>
-        </div>
+    </a>
+    <div class="project-info">
+        <h4>Alive - Logo animation</h4>
     </div>
+</div>
     
     <div class="project-card">
+    <a href="https://vimeo.com/1159783022?share=copy&fl=sv&fe=ci" class="vimeo-popup">
         <div class="video-preview">
-			<div class="play-overlay">
-            <span class="icon solid fa-play"></span>
+            <div class="play-overlay">
+                <span class="icon solid fa-play"></span>
+            </div>
+            <img src="images/preview2.gif" alt="Cyberpunk UI">
         </div>
-            <img src="images/project2.jpg" alt="Neo-Tokyo">
-        </div>
-        <div class="project-info">
-            <h4>Neo-Tokyo Branding</h4>
-            <a href="#work" class="play-icon"></a>
-        </div>
+    </a>
+    <div class="project-info">
+        <h4>Digital - test animation</h4>
     </div>
-    
-    </div>
+</div>
 </header>
 
 				<!-- Main -->
@@ -393,8 +390,18 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 				<!-- Footer -->
 					<footer id="footer">
-						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</footer>
+    <div class="footer-profile">
+        <img src="images/avatar.jpg" alt="Serhii Aleinykov" class="avatar">
+        <ul class="icons footer-socials">
+    <li><a href="https://vimeo.com/user253907374" class="icon brands fa-vimeo-v"><span class="label">Vimeo</span></a></li>
+    <li><a href="www.linkedin.com/in/serhii-aleinykov" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+    <li><a href="https://www.upwork.com/freelancers/~01807f34907d9f7fc8" class="icon solid fa-briefcase"><span class="label">Upwork</span></a></li>
+    <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+    <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+</ul>
+    </div>
+    <p class="copyright">&copy; 2026 Serhii Aleinykov. Built with AE and Magic.</p>
+</footer>
 
 			</div>
 
@@ -406,6 +413,20 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/main.js"></script>
 		
 <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+
+<script>
+$(document).ready(function() {
+    $('.vimeo-popup').magnificPopup({
+        type: 'iframe',
+        mainClass: 'mfp-fade',
+        removalDelay: 160,
+        preloader: false,
+        fixedContentPos: false
+    });
+});
+</script>
 		
 	</body>
 </html>
