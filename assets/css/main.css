@@ -1956,4 +1956,17 @@ input, select, textarea {
     height: 100% !important;
     object-fit: cover !important; /* Ключевое свойство: растягивает и обрезает лишнее, убирая полосы */
     transform: scale(1.05); /* Легкий зум, чтобы гарантированно убрать микро-щели по бокам */
+}.avatar-link {
+    border-bottom: none !important; /* Убирает стандартную линию под ссылками в Dimension */
+    display: inline-block;
+}@media screen and (max-width: 736px) {
+    #bg-container {
+        height: 100%; /* Гарантирует заполнение на мобильных */
+        position: fixed;
+    }
+    
+    #bg-container dotlottie-player {
+        object-fit: cover;
+        /* Если звезды кажутся слишком крупными на телефоне, можно чуть уменьшить масштаб здесь */
+    }
 }
