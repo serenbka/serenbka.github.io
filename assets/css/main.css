@@ -1684,3 +1684,259 @@ input, select, textarea {
     background-color: rgba(0, 0, 0, 0.2); /* Легкая прозрачность для контента */
     min-height: 100vh;
 }
+/* Контейнер для адаптивного видео */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Пропорции 16:9 */
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 1em;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.project-item h3 {
+    margin-bottom: 0.5em;
+    color: #ffffff;
+}
+/* Верхнее меню */
+#header nav {
+    border: none;
+    margin-bottom: 2rem;
+}
+
+/* Сетка карточек */
+.main-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 3rem;
+    padding: 0 2rem;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: #00f2ff; /* Неоновый голубой при наведении */
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+}
+
+.video-preview img {
+    width: 100%;
+    display: block;
+}
+
+.project-info {
+    padding: 15px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-info h4 {
+    margin: 0;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+/* Контейнер для превью */
+.video-preview {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* Слой оверлея (затемнение + кнопка) */
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 242, 255, 0.2); /* Легкий неоновый оттенок */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Скрыто по умолчанию */
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+/* Сама иконка Play */
+.play-overlay .icon {
+    font-size: 2rem;
+    color: #fff;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    text-shadow: 0 0 15px rgba(0, 242, 255, 0.8);
+}
+
+/* Эффект при наведении на КАРТОЧКУ */
+.project-card:hover .play-overlay {
+    opacity: 1; /* Проявляем оверлей */
+}
+
+.project-card:hover .play-overlay .icon {
+    transform: scale(1.1); /* Слегка увеличиваем иконку */
+}
+
+/* Эффект зума для картинки при наведении */
+.video-preview img {
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .video-preview img {
+    transform: scale(1.05);
+}
+.project-card:hover .project-info h4 {
+    color: #00f2ff;
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+    transition: all 0.3s ease;
+}
+/* Фикс центрирования иконки Play */
+.play-overlay .icon {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.play-overlay .icon:before {
+    margin: 0 !important;
+    font-size: 2.5rem; /* Размер треугольника Play */
+}
+
+/* Улучшенная рамка и свечение */
+.project-card {
+    position: relative;
+    background: rgba(0, 0, 0, 0.5); /* Более темный фон карточки */
+    border: 1px solid rgba(0, 242, 255, 0.1); /* Тонкая начальная рамка */
+}
+
+.project-card:hover {
+    border-color: #00f2ff !important;
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.4), inset 0 0 10px rgba(0, 242, 255, 0.1) !important;
+}
+
+/* Фикс отображения картинок превью */
+.video-preview img {
+    width: 100%;
+    height: 180px; /* Фиксированная высота для ровной сетки */
+    object-fit: cover; /* Чтобы GIF не растягивался криво */
+    display: block;
+}
+.project-card a {
+    border-bottom: none !important; /* Убирает подчеркивание ссылок, если оно есть */
+    display: block;
+}
+
+.vimeo-popup {
+    cursor: pointer;
+}
+/* Делаем карточки одинаковой высоты и убираем лишние отступы */
+.main-projects-grid {
+    align-items: start;
+}
+
+.project-card img {
+    width: 100% !important;
+    height: 200px !important; /* Настройте высоту под свои нужды */
+    object-fit: cover !important; /* Это важно, чтобы GIF не искажался */
+    display: block;
+}
+
+/* Убираем стандартные рамки ссылок в Dimension */
+.vimeo-popup {
+    border-bottom: none !important;
+}
+/* Убираем лишний отступ снизу у текстового блока в хедере */
+#header .content .inner {
+    padding-bottom: 1rem; /* Уменьшили отступ после текста */
+}
+
+/* Уменьшаем отступ до сетки проектов */
+.main-projects-grid {
+    margin-top: 1.5rem !important;
+}
+/* Уменьшаем отступ над заголовком */
+#header .content .inner {
+    padding-top: 2rem !important; /* Уменьшаем верхний паддинг */
+}
+
+/* Если заголовок всё еще кажется низко, можно уменьшить отступ всего контента */
+#header .content {
+    margin-bottom: 0 !important;
+}
+/* Позиционирование футера в углу */
+#footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Прижимаем к правому краю */
+    padding: 2rem;
+    position: relative;
+}
+
+.footer-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Расстояние между фото и иконками */
+    margin-bottom: 10px;
+}
+
+/* Стиль аватара */
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* Делаем круглым */
+    border: 2px solid rgba(0, 242, 255, 0.5); /* Неоновая рамка */
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.1);
+    border-color: #00f2ff;
+}
+
+/* Стиль иконок рядом с аватаром */
+.footer-socials {
+    margin: 0 !important;
+    cursor: default;
+    list-style: none;
+}
+
+.footer-socials li {
+    display: inline-block;
+    padding: 0 5px;
+}
+
+.footer-socials li a {
+    border-bottom: none !important;
+}
+.footer-socials li a {
+    font-size: 1.2rem; /* Немного уменьшим размер, чтобы влезло больше иконок */
+    transition: color 0.3s ease;
+}
+
+.footer-socials li a:hover {
+    color: #00f2ff !important; /* Неоновый голубой при наведении на иконку */
+}
