@@ -1940,3 +1940,20 @@ input, select, textarea {
 .footer-socials li a:hover {
     color: #00f2ff !important; /* Неоновый голубой при наведении на иконку */
 }
+#bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Используем ширину вьюпорта */
+    height: 100vh; /* Используем высоту вьюпорта */
+    z-index: -1;
+    overflow: hidden;
+    background-color: #000000;
+}
+
+#bg-container dotlottie-player {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Ключевое свойство: растягивает и обрезает лишнее, убирая полосы */
+    transform: scale(1.05); /* Легкий зум, чтобы гарантированно убрать микро-щели по бокам */
+}
