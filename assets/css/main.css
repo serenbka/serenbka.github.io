@@ -1665,43 +1665,6 @@ input, select, textarea {
     background-color: rgba(0, 0, 0, 0.2); /* Легкая прозрачность для контента */
     min-height: 100vh;
 }
-/* Контейнер для адаптивного видео */
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* Пропорции 16:9 */
-    height: 0;
-    overflow: hidden;
-    margin-bottom: 1em;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.project-item h3 {
-    margin-bottom: 0.5em;
-    color: #ffffff;
-}
-/* Верхнее меню */
-#header nav {
-    border: none;
-    margin-bottom: 2rem;
-}
-
-/* Сетка карточек */
-.main-projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 3rem;
-    padding: 0 2rem;
-}
 
 .project-card {
     background: rgba(255, 255, 255, 0.05);
@@ -1713,8 +1676,6 @@ input, select, textarea {
 
 .project-card:hover {
     transform: translateY(-5px);
-    border-color: #00f2ff; /* Неоновый голубой при наведении */
-    box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
 }
 
 .video-preview img {
@@ -1911,7 +1872,6 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
     overflow-x: hidden; /* Запрещает боковую прокрутку */
 }
 
@@ -2187,4 +2147,149 @@ article.active > *:nth-child(10) { animation-delay: 1.0s; }
     color: rgba(255, 255, 255, 0.7) !important; /* Вместо яркого белого — мягкий серый с прозрачностью */
     text-shadow: 0 0 15px rgba(207, 150, 253, 0.6) !important; /* Сдержанный акцент */
     transform: scale(1.1);
+}
+/* Размытие фона при открытии видео-попапа */
+.mfp-bg {
+    background: rgba(10, 10, 10, 0.5) !important; /* Делаем подложку темной, но прозрачной */
+    backdrop-filter: blur(10px) !important; /* САМА МАГИЯ: размывает всё, что под окном */
+    -webkit-backdrop-filter: blur(10px); /* Поддержка для Safari */
+}
+
+/* Добавляем тонкую рамку самому окну с видео, чтобы оно не сливалось */
+.mfp-iframe-scaler {
+    border: 1px solid rgba(207, 150, 253, 0.3);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+}
+/* Анимация мигающей точки в футере */
+.status-blink {
+    animation: blink 2s infinite;
+}
+/* Группируем всё в правой части */
+.footer-copyright-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Все элементы группы прижаты к правому краю */
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Статус остается справа */
+.system-status {
+    color: #cf96fd;
+    font-family: monospace;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+/* А сам текст копирайта центрируем относительно этой правой колонки */
+.copyright-main {
+    width: 100%;
+    text-align: center; /* Центрируем текст */
+    margin: 0 !important;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Анимация точки */
+.status-blink {
+    animation: blink 2s infinite;
+}
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+/* Размываем фон и заголовок, когда открыта любая статья */
+body.is-article-visible #bg-container,
+body.is-article-visible #header {
+    filter: blur(1px);
+    transition: filter 0.5s ease;
+    pointer-events: none; /* Чтобы нельзя было случайно кликнуть сквозь блюр */
+}
+
+/* Плавный возврат в резкость при закрытии */
+#bg-container, #header {
+    transition: filter 0.5s ease;
+    filter: blur(0);
+}
+
+/* Делаем саму подложку статьи чуть более стеклянной */
+#main article {
+    backdrop-filter: blur(15px);
+    background-color: rgba(27, 31, 34, 0.85); /* Чуть прозрачнее для эффекта стекла */
+    border: 1px solid rgba(207, 150, 253, 0.2);
+}
+/* Наложение текстуры на окна статей */
+#main article::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Путь к твоему файлу в папке images */
+    background-image: url('../../images/scratches.png'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    /* Настройки прозрачности и смешивания */
+    opacity: 0.03; /* Отрегулируй яркость царапин здесь (0.1 - 0.3) */
+    mix-blend-mode: screen; /* "Экран" уберет черный фон текстуры, оставив светлые царапины */
+    
+    pointer-events: none; /* Чтобы текстура не мешала выделять текст */
+    z-index: 0; /* Чтобы быть позади текста, но поверх фона статьи */
+}
+
+/* Чтобы текст в статьях был выше текстуры и легко читался */
+#main article > * {
+    position: relative;
+    z-index: 1;
+}
+/* 1. Отключаем стандартные быстрые границы шаблона */
+#header .content {
+    border-top: none !important;
+    border-bottom: none !important;
+    position: relative;
+    padding: 1.2rem 0 !important; /* Настраиваем отступ, чтобы линии не прилипали к тексту */
+}
+
+/* Удаляем лишние системные элементы шаблона */
+#header .content:before,
+#header .content:after {
+    display: none !important; 
+}
+
+/* 2. Создаем СВОИ кастомные линии (Верхняя и Нижняя) */
+#header .content .inner::before,
+#header .content .inner::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%; /* Начальная ширина */
+    height: 2px; /* Толщина линий */
+    background-color: rgba(255, 255, 255, 0.5); /* Цвет линий */
+    
+    /* Твоя фирменная плавность */
+    transition: width 2.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Позиционируем верхнюю линию */
+#header .content .inner::before {
+    top: 0;
+}
+
+/* Позиционируем нижнюю линию */
+#header .content .inner::after {
+    bottom: 0;
+}
+
+/* 3. Запуск анимации для обеих линий одновременно при загрузке */
+body:not(.is-preload) #header .content .inner::before,
+body:not(.is-preload) #header .content .inner::after {
+    width: 100%; /* Растягиваем до краев */
 }
