@@ -1659,26 +1659,7 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
-
-/* Настройки фонового контейнера */
-#bg-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: -1; /* Уводит на самый задний план */
-    overflow: hidden;
-    background-color: #000000; /* Глубокий черный цвет под звездами */
-}
-
-/* Делаем сам плеер Lottie растянутым по размеру */
-#bg-container dotlottie-player {
-    object-fit: cover; /* Растягивает анимацию без искажений */
-    width: 100%;
-    height: 100%;
-}
-
+/****************************************************************************************************************************************************************
 /* Немного затемним основной фон шаблона, чтобы звезды были видны лучше */
 #wrapper {
     background-color: rgba(0, 0, 0, 0.2); /* Легкая прозрачность для контента */
@@ -1837,13 +1818,6 @@ input, select, textarea {
     box-shadow: 0 0 15px rgba(0, 242, 255, 0.4), inset 0 0 10px rgba(0, 242, 255, 0.1) !important;
 }
 
-/* Фикс отображения картинок превью */
-.video-preview img {
-    width: 100%;
-    height: 180px; /* Фиксированная высота для ровной сетки */
-    object-fit: cover; /* Чтобы GIF не растягивался криво */
-    display: block;
-}
 .project-card a {
     border-bottom: none !important; /* Убирает подчеркивание ссылок, если оно есть */
     display: block;
@@ -1867,19 +1841,6 @@ input, select, textarea {
 /* Убираем стандартные рамки ссылок в Dimension */
 .vimeo-popup {
     border-bottom: none !important;
-}
-/* Убираем лишний отступ снизу у текстового блока в хедере */
-#header .content .inner {
-    padding-bottom: 1rem; /* Уменьшили отступ после текста */
-}
-
-/* Уменьшаем отступ до сетки проектов */
-.main-projects-grid {
-    margin-top: 1.5rem !important;
-}
-/* Уменьшаем отступ над заголовком */
-#header .content .inner {
-    padding-top: 2rem !important; /* Уменьшаем верхний паддинг */
 }
 
 /* Если заголовок всё еще кажется низко, можно уменьшить отступ всего контента */
@@ -1940,35 +1901,10 @@ input, select, textarea {
 .footer-socials li a:hover {
     color: #00f2ff !important; /* Неоновый голубой при наведении на иконку */
 }
-#bg-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw; /* Используем ширину вьюпорта */
-    height: 100vh; /* Используем высоту вьюпорта */
-    z-index: -1;
-    overflow: hidden;
-    background-color: #000000;
-}
 
-#bg-container dotlottie-player {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important; /* Ключевое свойство: растягивает и обрезает лишнее, убирая полосы */
-    transform: scale(1.05); /* Легкий зум, чтобы гарантированно убрать микро-щели по бокам */
-}.avatar-link {
+.avatar-link {
     border-bottom: none !important; /* Убирает стандартную линию под ссылками в Dimension */
     display: inline-block;
-}@media screen and (max-width: 736px) {
-    #bg-container {
-        height: 100%; /* Гарантирует заполнение на мобильных */
-        position: fixed;
-    }
-    
-    #bg-container dotlottie-player {
-        object-fit: cover;
-        /* Если звезды кажутся слишком крупными на телефоне, можно чуть уменьшить масштаб здесь */
-    }
 }
 /* Убираем системные отступы самого браузера */
 html, body {
@@ -1979,27 +1915,6 @@ html, body {
     overflow-x: hidden; /* Запрещает боковую прокрутку */
 }
 
-#bg-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw !important; /* На всю ширину видимого окна */
-    height: 100vh !important; /* На всю высоту видимого окна */
-    z-index: -1;
-    background-color: #000;
-}
-
-#bg-container dotlottie-player {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.1); /* Центрируем и чуть увеличиваем, чтобы скрыть края */
-    min-width: 100.5%; /* Чуть больше 100%, чтобы не было белых микро-линий */
-    min-height: 100.5%;
-    width: auto;
-    height: auto;
-    object-fit: cover !important;
-}
 .software-grid {
     display: flex;
     gap: 20px;
@@ -2038,4 +1953,238 @@ html, body {
     text-transform: uppercase;
     letter-spacing: 1px;
     text-align: center;
+}
+/* Стилизация страницы Expertise в стиле After Effects */
+#intro, #work, #about, #contact {
+    background-color: rgba(207, 150, 253, 0.07) !important; /* Тонкий фиолетовый оттенок */
+    border: 1px solid rgba(207, 150, 253, 0.2) !important; /* Цветная рамка */
+    box-shadow: 0 0 30px rgba(207, 150, 253, 0.1); /* Мягкое фиолетовое свечение */
+}
+
+/* Линия под заголовком Expertise */
+#work h2.major:after {
+    background-color: #cf96fd !important;
+}
+/* Цвет выделения текста в стиле After Effects */
+::selection {
+    background: rgba(207, 150, 253, 0.3); /* Фиолетовый фон при выделении */
+    color: #ffffff;
+}
+
+::-moz-selection {
+    background: rgba(207, 150, 253, 0.3);
+    color: #ffffff;
+}
+/* Плавное свечение для всех интерактивных элементов */
+a, input[type="submit"], .sw-item, .project-card {
+    transition: all 0.3s ease !important;
+}
+
+/* При наведении на ссылки и иконки — меняем цвет и добавляем мягкий Glow */
+a:hover, .sw-item:hover .sw-logo {
+    color: #cf96fd !important;
+    text-shadow: 0 0 10px rgba(207, 150, 253, 0.6);
+}
+
+/* Кнопки в форме и фильтрах */
+input[type="submit"]:hover, .button.primary:hover {
+    background-color: rgba(207, 150, 253, 0.2) !important;
+    box-shadow: 0 0 20px rgba(207, 150, 253, 0.4) !important;
+    border-color: #cf96fd !important;
+}
+/* Плавное проявление сверху вниз */
+@keyframes smoothDrop {
+    from { 
+        opacity: 0; 
+        transform: translateY(-20px);
+        filter: blur(4px);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+        filter: blur(0); 
+    }
+}
+
+/* Применяем анимацию ко ВСЕМ прямым потомкам активной статьи */
+article.active > * {
+    opacity: 0;
+    animation: smoothDrop 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Автоматическая очередь для первых 10 элементов (универсально для всех вкладок) */
+article.active > *:nth-child(1) { animation-delay: 0.1s; }
+article.active > *:nth-child(2) { animation-delay: 0.2s; }
+article.active > *:nth-child(3) { animation-delay: 0.3s; }
+article.active > *:nth-child(4) { animation-delay: 0.4s; }
+article.active > *:nth-child(5) { animation-delay: 0.5s; }
+article.active > *:nth-child(6) { animation-delay: 0.6s; }
+article.active > *:nth-child(7) { animation-delay: 0.7s; }
+article.active > *:nth-child(8) { animation-delay: 0.8s; }
+article.active > *:nth-child(9) { animation-delay: 0.9s; }
+article.active > *:nth-child(10) { animation-delay: 1.0s; }
+
+/* Настройка полосы прокрутки для Chrome, Safari и Edge */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2); 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cf96fd; /* Наш цвет AE */
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #b570f7; /* Чуть темнее при наведении */
+}
+
+/* Для Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #cf96fd rgba(0, 0, 0, 0.2);
+}
+#bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background-color: #000;
+}
+
+#bg-container dotlottie-player {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Скейлим плеер: 1.5 дает огромный запас, чтобы при любом сжатии 
+       края анимации не заходили внутрь экрана */
+    transform: translate(-50%, -50%) scale(1.5);
+    
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Здесь ставим contain, чтобы анимация скейлилась целиком */
+}
+
+/* Для экстремально узких окон (телефоны) */
+@media screen and (max-width: 736px) {
+    #bg-container dotlottie-player {
+        /* Увеличиваем масштаб еще сильнее для вертикальных экранов */
+        transform: translate(-50%, -50%) scale(3); 
+    }
+}
+/* 1. Полностью убираем все линии в навигации (и горизонтальную, и вертикальные) */
+#header nav ul li {
+    border-left: none !important;
+}
+
+#header nav:before, #header nav:after {
+    display: none !important;
+}
+
+/* 2. Сближаем линии вокруг имени и делаем их ярче (как были) */
+#header .content .inner {
+    padding: 1.2rem 2rem !important; /* Еще плотнее к тексту */
+}
+
+#header .content {
+    border-top: solid 2px rgba(255, 255, 255, 0.5) !important;
+    border-bottom: solid 2px rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Убираем лишний отступ у заголовка внутри этих линий */
+#header .content .inner h1 {
+    margin-bottom: 0.5rem !important;
+}
+/* Убираем вертикальную линию над заголовком */
+#header .content:before {
+    display: none !important;
+}/* Делаем навигацию контейнером для полоски */
+#header nav {
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(207, 150, 253, 0.05); /* Очень легкий базовый тон */
+    border: 1px solid rgba(207, 150, 253, 0.2) !important;
+}
+
+/* Настройка самой полосы загрузки */
+.nav-bg-fill {
+    position: absolute;
+    top: 0;
+    left: -100%; /* Начинаем за пределами видимости */
+    width: 100%;
+    height: 100%;
+    background: rgba(207, 150, 253, 0.15); /* Цвет заполнения (прозрачный фиолетовый) */
+    z-index: 0; /* Уходим под текст */
+    animation: renderFill 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Анимация "Рендера" */
+@keyframes renderFill {
+    0% { left: -100%; }
+    100% { left: 0%; }
+}
+
+/* Чтобы текст меню был поверх полоски и не терял четкость */
+#header nav ul {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0;
+}
+
+/* Убираем лишние бордеры, если остались */
+#header nav ul li {
+    border: none !important;
+    padding: 0 !important;
+}
+/* Перекрашиваем свечение карточек в цвет AE */
+.project-card:hover {
+    border-color: #cf96fd !important;
+    box-shadow: 0 0 20px rgba(207, 150, 253, 0.4), inset 0 0 10px rgba(207, 150, 253, 0.1) !important;
+}
+
+/* Перекрашиваем оверлей (затемнение при наведении) */
+.play-overlay {
+    background: rgba(207, 150, 253, 0.2) !important; /* Вместо синего — мягкий фиолетовый */
+}
+
+/* Цвет иконки Play и её свечение */
+.play-overlay .icon {
+    color: #ffffff !important;
+    text-shadow: 0 0 15px rgba(207, 150, 253, 1) !important;
+}
+
+/* Цвет заголовка внутри карточки при наведении */
+.project-card:hover .project-info h4 {
+    color: #cf96fd !important;
+    text-shadow: 0 0 10px rgba(207, 150, 253, 0.5) !important;
+}
+
+/* Если у тебя есть аватар в футере, его рамку тоже заменим для единства */
+.avatar {
+    border-color: rgba(207, 150, 253, 0.5) !important;
+}
+
+.avatar:hover {
+    border-color: #cf96fd !important;
+}
+/* Цвет самой иконки треугольника Play (приглушаем) */
+.play-overlay .icon:before {
+    color: rgba(207, 150, 253, 0.6) !important; /* Полупрозрачный фиолетовый */
+    text-shadow: 0 0 10px rgba(207, 150, 253, 0.4) !important; /* Мягкое, не бьющее в глаза свечение */
+    transition: all 0.3s ease;
+}
+/* Эффект при наведении на карточку */
+.project-card:hover .play-overlay .icon:before {
+    color: rgba(255, 255, 255, 0.7) !important; /* Вместо яркого белого — мягкий серый с прозрачностью */
+    text-shadow: 0 0 15px rgba(207, 150, 253, 0.6) !important; /* Сдержанный акцент */
+    transform: scale(1.1);
 }
