@@ -6,7 +6,15 @@
 -->
 <html>
 	<head>
+		
+   <meta name="description" content="Technical Motion Designer specializing in 2D Animation and Lottie. Bridging the gap between engineering and creative storytelling.">
+   <meta property="og:title" content="Serhii Aleinykov | Portfolio">
+   <meta property="og:image" content="images/avatar.jpg">
+		
 		<title>Serhii Aleinykov | Motion Design Portfolio</title>
+		
+		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+		
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -15,7 +23,7 @@
 	<body class="is-preload">
 		
 		<div id="bg-container">
-    <dotlottie-player src="lottie/Stars.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></dotlottie-player>
+    <dotlottie-player src="lottie/Stars.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
 </div>
 		
 		<!-- Wrapper -->
@@ -23,6 +31,7 @@
 
 				<!-- Header -->
 					<header id="header">
+						
     <nav>
         <ul>
             <li><a href="#intro">Intro</a></li>
@@ -69,7 +78,7 @@
 </div>
 						
 	<div class="project-card">
-    <a href="https://vimeo.com/manage/videos/1159783022" class="vimeo-popup">
+    <a href="https://player.vimeo.com/video/1159783022" class="vimeo-popup">
         <div class="video-preview">
             <div class="play-overlay">
                 <span class="icon solid fa-play"></span>
@@ -100,10 +109,7 @@
     <h2 class="major">Expertise</h2>
     <p>I specialize in creating high-end 2D motion graphics that capture attention and drive results. My workflow is built on efficiency and advanced After Effects techniques.</p>
     
-    <div class="table-wrapper">
-        <table>
-            <thead>
-				<h4>Tools I Master:</h4>
+	<h4>Tools I Master:</h4>
 <div class="software-grid">
     <div class="sw-item ae" title="After Effects">
         <span class="sw-logo">Ae</span>
@@ -122,6 +128,10 @@
         <span class="sw-name">Photoshop</span>
     </div>
 </div>
+	
+    <div class="table-wrapper">
+        <table>
+            <thead>
                 <tr>
                     <th>Service</th>
                     <th>What I do</th>
@@ -458,7 +468,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
     </a>
         <ul class="icons footer-socials">
     <li><a href="https://vimeo.com/user253907374" class="icon brands fa-vimeo-v"><span class="label">Vimeo</span></a></li>
-    <li><a href="www.linkedin.com/in/serhii-aleinykov" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+    <li><a href="https://www.linkedin.com/in/serhii-aleinykov" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
     <li><a href="https://www.upwork.com/freelancers/~01807f34907d9f7fc8" class="icon solid fa-briefcase"><span class="label">Upwork</span></a></li>
     <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
     <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
@@ -490,6 +500,38 @@ $(document).ready(function() {
         fixedContentPos: false
     });
 });
+</script>
+		
+		<script>
+    const contactForm = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+
+    contactForm.onsubmit = async (e) => {
+        e.preventDefault();
+        
+        // 1. Сначала отправляем в Telegram (через твоего бота)
+        const token = "8519409637:AAFToaJWrTcvtDV2dCF74vt9nSIHlrQeaRA";
+        const chatId = "1315803687";
+        const text = `Новое сообщение с сайта!\nИмя: ${name.value}\nEmail: ${email.value}\nСообщение: ${message.value}`;
+        const telegramUrl = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(text)}`;
+        
+        fetch(telegramUrl); // Отправка в телеграм "в фоне"
+
+        // 2. Затем отправляем на Formspree (основная отправка на почту)
+        const data = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            status.innerHTML = "Thanks! Your message has been sent.";
+            contactForm.reset();
+        } else {
+            status.innerHTML = "Oops! There was a problem submitting your form";
+        }
+    };
 </script>
 		
 	</body>
