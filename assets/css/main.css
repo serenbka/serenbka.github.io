@@ -1970,3 +1970,72 @@ input, select, textarea {
         /* Если звезды кажутся слишком крупными на телефоне, можно чуть уменьшить масштаб здесь */
     }
 }
+/* Убираем системные отступы самого браузера */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Запрещает боковую прокрутку */
+}
+
+#bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw !important; /* На всю ширину видимого окна */
+    height: 100vh !important; /* На всю высоту видимого окна */
+    z-index: -1;
+    background-color: #000;
+}
+
+#bg-container dotlottie-player {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.1); /* Центрируем и чуть увеличиваем, чтобы скрыть края */
+    min-width: 100.5%; /* Чуть больше 100%, чтобы не было белых микро-линий */
+    min-height: 100.5%;
+    width: auto;
+    height: auto;
+    object-fit: cover !important;
+}
+.software-grid {
+    display: flex;
+    gap: 20px;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.sw-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+}
+
+.sw-logo {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.4rem;
+    border-radius: 8px;
+    border: 2px solid;
+    margin-bottom: 8px;
+}
+
+/* Цвета Adobe */
+.ae .sw-logo { color: #cf96fd; border-color: #cf96fd; background: rgba(207, 150, 253, 0.1); }
+.pr .sw-logo { color: #9999fb; border-color: #9999fb; background: rgba(153, 153, 251, 0.1); }
+.ai .sw-logo { color: #ff9a00; border-color: #ff9a00; background: rgba(255, 154, 0, 0.1); }
+.ps .sw-logo { color: #31a8ff; border-color: #31a8ff; background: rgba(49, 168, 255, 0.1); }
+
+.sw-name {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
