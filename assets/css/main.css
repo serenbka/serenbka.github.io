@@ -2293,3 +2293,35 @@ body:not(.is-preload) #header .content .inner::before,
 body:not(.is-preload) #header .content .inner::after {
     width: 100%; /* Растягиваем до краев */
 }
+/* Убираем системную синюю подсветку при клике на мобильных */
+a, 
+button, 
+input, 
+textarea, 
+.close,
+#header nav ul li a {
+    -webkit-tap-highlight-color: transparent !important;
+    outline: none !important;
+}
+/* Перекрашиваем фон кнопок навигации при нажатии (мобильный эффект) */
+#header nav ul li:active,
+#header nav ul li a:active {
+    background-color: rgba(207, 150, 253, 0.2) !important;
+}
+
+/* Перекрашиваем подсветку крестика закрытия (кнопка Close) */
+article .close:active:before,
+article .close:active:after {
+    background-color: #cf96fd !important; /* Сам крестик */
+}
+
+article .close:active {
+    background-color: rgba(207, 150, 253, 0.2) !important; /* Фон под крестиком */
+}
+/* Дополнительный фикс для iOS */
+#header nav ul li, 
+#header nav ul li a,
+article .close {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
