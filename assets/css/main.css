@@ -2007,37 +2007,6 @@ article.active > *:nth-child(10) { animation-delay: 1.0s; }
     scrollbar-width: thin;
     scrollbar-color: #cf96fd rgba(0, 0, 0, 0.2);
 }
-#bg-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
-    background-color: #000;
-}
-
-#bg-container dotlottie-player {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    /* Скейлим плеер: 1.5 дает огромный запас, чтобы при любом сжатии 
-       края анимации не заходили внутрь экрана */
-    transform: translate(-50%, -50%) scale(1.5);
-    
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Здесь ставим contain, чтобы анимация скейлилась целиком */
-}
-
-/* Для экстремально узких окон (телефоны) */
-@media screen and (max-width: 736px) {
-    #bg-container dotlottie-player {
-        /* Увеличиваем масштаб еще сильнее для вертикальных экранов */
-        transform: translate(-50%, -50%) scale(3); 
-    }
-}
 /* 1. Полностью убираем все линии в навигации (и горизонтальную, и вертикальные) */
 #header nav ul li {
     border-left: none !important;
@@ -2324,4 +2293,52 @@ article .close:active {
 article .close {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
+}
+/* --- ФИНАЛЬНЫЕ ФИКСЫ: ФОН И МОБИЛЬНАЯ ВЕРСИЯ --- */
+
+/* 1. Намертво фиксируем фон Lottie */
+#bg-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100vh; /* Используем vh для стабильности */
+    height: -webkit-fill-available; 
+    z-index: -1;
+    overflow: hidden;
+    background-color: #000;
+    pointer-events: none;
+    will-change: transform;
+}
+
+#bg-container dotlottie-player {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important; /* Убирает черные полосы */
+}
+
+/* 2. Убираем синюю подсветку клика и фиксируем мобильный фон */
+@media screen and (max-width: 736px) {
+    /* Чтобы фон не дергался при скрытии адресной строки */
+    #bg-container { height: 110vh; } 
+    #bg-container dotlottie-player { transform: translate(-50%, -50%) scale(2.5); }
+
+    /* Удаление синего прямоугольника при тапе */
+    a, button, .close, #header nav ul li a {
+        -webkit-tap-highlight-color: transparent !important;
+        outline: none !important;
+    }
+
+    /* Цвет нажатия в стиле AE */
+    #header nav ul li a:active {
+        background-color: rgba(207, 150, 253, 0.2) !important;
+    }
+
+    /* Фикс крестика закрытия */
+    article .close:active {
+        background-color: rgba(207, 150, 253, 0.2) !important;
+    }
 }
