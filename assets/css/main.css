@@ -2342,3 +2342,34 @@ article .close {
         outline: none !important;
     }
 }
+/* Убираем квадратную рамку вокруг крестика закрытия */
+article .close {
+    border-bottom: none !important; /* Убираем линию, если она есть */
+    outline: none !important;      /* Убираем системную рамку фокуса */
+}
+
+article .close:before,
+article .close:after {
+    /* Эти элементы рисуют сам крестик, их не трогаем */
+}
+
+/* Принудительно делаем подложку круглой при любом состоянии */
+article .close {
+    border-radius: 50% !important; 
+    overflow: hidden;
+}
+
+/* Если квадрат появляется именно при клике/нажатии */
+article .close:focus, 
+article .close:active, 
+article .close:hover {
+    outline: none !important;
+    box-shadow: none !important; /* Убираем возможную квадратную тень */
+    border-radius: 50% !important;
+}
+
+/* Оставляем только круговое свечение в стиле AE */
+article .close:hover:before,
+article .close:hover:after {
+    color: #cf96fd !important;
+}
