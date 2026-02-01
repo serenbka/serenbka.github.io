@@ -2294,7 +2294,7 @@ article .close {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
 }
-/* --- ОБНОВЛЕННЫЙ ФИКС ФОНА (STARS.JSON) --- */
+/* --- ФИНАЛЬНЫЙ ХИРУРГИЧЕСКИЙ ФИКС ФОНА --- */
 
 #bg-container {
     position: fixed;
@@ -2305,38 +2305,40 @@ article .close {
     height: -webkit-fill-available;
     z-index: -1;
     overflow: hidden;
-    background-color: #000;
+    background-color: #000; /* Цвет на случай микро-лага */
     pointer-events: none;
 }
 
 #bg-container dotlottie-player {
     position: absolute;
-    top: 50%;
+    /* Вместо 50% ставим 48%, чтобы принудительно подтянуть анимацию ВВЕРХ */
+    top: 48%; 
     left: 50%;
-    transform: translate(-50%, -50%) scale(1.5);
-    width: 100%;
-    height: 100%;
+    /* Масштаб 1.6 для десктопа */
+    transform: translate(-50%, -50%) scale(1.6);
+    width: 101%; /* Даем 1% запаса по ширине */
+    height: 101%; /* Даем 1% запаса по высоте */
     object-fit: cover !important;
 }
 
 @media screen and (max-width: 736px) {
     #bg-container {
-        /* Приподнимаем контейнер выше экрана, чтобы спрятать верхнюю полосу */
-        height: 115vh; 
-        top: -5vh; 
+        /* Увеличиваем высоту контейнера еще сильнее */
+        height: 120vh; 
+        /* Сильнее выталкиваем за верхнюю границу */
+        top: -10vh; 
     }
 
     #bg-container dotlottie-player {
-        /* Увеличиваем масштаб до 3.5, чтобы растянуть 1920x1080 на узкий экран */
-        transform: translate(-50%, -50%) scale(3.5);
+        /* Огромный масштаб для мобилок, чтобы "съесть" любые рамки */
+        transform: translate(-50%, -50%) scale(4);
+        /* Сдвигаем точку центра еще выше для мобилок */
+        top: 45%; 
     }
 
     /* Сохраняем фикс синих пятен */
     a, button, .close, #header nav ul li a {
         -webkit-tap-highlight-color: transparent !important;
         outline: none !important;
-    }
-    #header nav ul li a:active, article .close:active {
-        background-color: rgba(207, 150, 253, 0.2) !important;
     }
 }
