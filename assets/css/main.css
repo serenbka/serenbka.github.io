@@ -2294,58 +2294,44 @@ article .close {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
 }
-/* --- ФИНАЛЬНЫЙ ФИКС ФОНА БЕЗ ЧЕРНЫХ ПОЛОС --- */
+/* --- ОБНОВЛЕННЫЙ ФИКС ФОНА (STARS.JSON) --- */
 
 #bg-container {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    /* Делаем высоту с запасом, чтобы перекрыть системные бары браузера */
-    height: 110vh; 
+    width: 100%;
+    height: 100vh;
     height: -webkit-fill-available;
     z-index: -1;
     overflow: hidden;
     background-color: #000;
     pointer-events: none;
-    /* Убираем любые возможные скачки при скролле */
-    transform: translateZ(0); 
-    will-change: transform;
 }
 
 #bg-container dotlottie-player {
     position: absolute;
-    /* Центрируем и жестко увеличиваем масштаб */
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(2); /* Масштаб 2x гарантирует заполнение */
-    
-    /* Эти параметры заставят Lottie игнорировать пропорции и растягиваться */
-    width: 110% !important; 
-    height: 110% !important;
-    
-    /* Принудительно заполняем всё пространство */
-    object-fit: cover !important; 
+    transform: translate(-50%, -50%) scale(1.5);
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;
 }
 
-/* Специфические настройки для мобильных (портретный режим) */
 @media screen and (max-width: 736px) {
     #bg-container {
-        /* Фиксируем высоту, чтобы она не менялась при появлении клавиатуры или скролле */
-        height: 120vh; 
-        top: -5vh; /* Немного приподнимаем вверх, чтобы скрыть возможную щель сверху */
+        /* Приподнимаем контейнер выше экрана, чтобы спрятать верхнюю полосу */
+        height: 115vh; 
+        top: -5vh; 
     }
 
     #bg-container dotlottie-player {
-        /* На мобилках увеличиваем масштаб еще сильнее, так как экран узкий и длинный */
+        /* Увеличиваем масштаб до 3.5, чтобы растянуть 1920x1080 на узкий экран */
         transform: translate(-50%, -50%) scale(3.5);
-        /* Отключаем плавность, чтобы не было "догоняющего" эффекта при скролле */
-        transition: none !important;
     }
-}
 
-/* Возвращаем фикс синих пятен, раз он сработал */
-@media screen and (max-width: 736px) {
+    /* Сохраняем фикс синих пятен */
     a, button, .close, #header nav ul li a {
         -webkit-tap-highlight-color: transparent !important;
         outline: none !important;
