@@ -2294,51 +2294,63 @@ article .close {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
 }
-/* --- ФИНАЛЬНЫЕ ФИКСЫ: ФОН И МОБИЛЬНАЯ ВЕРСИЯ --- */
+/* --- ФИНАЛЬНЫЙ ФИКС ФОНА БЕЗ ЧЕРНЫХ ПОЛОС --- */
 
-/* 1. Намертво фиксируем фон Lottie */
 #bg-container {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100vh; /* Используем vh для стабильности */
-    height: -webkit-fill-available; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* Делаем высоту с запасом, чтобы перекрыть системные бары браузера */
+    height: 110vh; 
+    height: -webkit-fill-available;
     z-index: -1;
     overflow: hidden;
     background-color: #000;
     pointer-events: none;
+    /* Убираем любые возможные скачки при скролле */
+    transform: translateZ(0); 
     will-change: transform;
 }
 
 #bg-container dotlottie-player {
     position: absolute;
+    /* Центрируем и жестко увеличиваем масштаб */
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(1.5);
-    width: 100%;
-    height: 100%;
-    object-fit: cover !important; /* Убирает черные полосы */
+    transform: translate(-50%, -50%) scale(2); /* Масштаб 2x гарантирует заполнение */
+    
+    /* Эти параметры заставят Lottie игнорировать пропорции и растягиваться */
+    width: 110% !important; 
+    height: 110% !important;
+    
+    /* Принудительно заполняем всё пространство */
+    object-fit: cover !important; 
 }
 
-/* 2. Убираем синюю подсветку клика и фиксируем мобильный фон */
+/* Специфические настройки для мобильных (портретный режим) */
 @media screen and (max-width: 736px) {
-    /* Чтобы фон не дергался при скрытии адресной строки */
-    #bg-container { height: 110vh; } 
-    #bg-container dotlottie-player { transform: translate(-50%, -50%) scale(2.5); }
+    #bg-container {
+        /* Фиксируем высоту, чтобы она не менялась при появлении клавиатуры или скролле */
+        height: 120vh; 
+        top: -5vh; /* Немного приподнимаем вверх, чтобы скрыть возможную щель сверху */
+    }
 
-    /* Удаление синего прямоугольника при тапе */
+    #bg-container dotlottie-player {
+        /* На мобилках увеличиваем масштаб еще сильнее, так как экран узкий и длинный */
+        transform: translate(-50%, -50%) scale(3.5);
+        /* Отключаем плавность, чтобы не было "догоняющего" эффекта при скролле */
+        transition: none !important;
+    }
+}
+
+/* Возвращаем фикс синих пятен, раз он сработал */
+@media screen and (max-width: 736px) {
     a, button, .close, #header nav ul li a {
         -webkit-tap-highlight-color: transparent !important;
         outline: none !important;
     }
-
-    /* Цвет нажатия в стиле AE */
-    #header nav ul li a:active {
-        background-color: rgba(207, 150, 253, 0.2) !important;
-    }
-
-    /* Фикс крестика закрытия */
-    article .close:active {
+    #header nav ul li a:active, article .close:active {
         background-color: rgba(207, 150, 253, 0.2) !important;
     }
 }
